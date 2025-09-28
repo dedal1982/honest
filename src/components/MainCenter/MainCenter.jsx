@@ -1,17 +1,17 @@
 import { createPortal } from "react-dom";
-import { useState } from "react";
 import Overlay from "../Overlay/Overlay";
 import CenterPopup from "../CenterPopup/CenterPopup";
+import useModal from "../../hooks/useModal";
 
 function MainCenter() {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const { isOpen, open, close } = useModal(false);
 
   const handleOpen = () => {
-    setModalVisible(true);
+    open();
   };
 
   const handleClose = () => {
-    setModalVisible(false);
+    close();
   };
   return (
     <div id="main-center" className="main__image-c" onClick={handleOpen}>
@@ -22,7 +22,7 @@ function MainCenter() {
           fillRule="evenodd"
         />
       </svg>
-      {isModalVisible &&
+      {isOpen &&
         createPortal(
           <Overlay onClose={handleClose}>
             <CenterPopup />

@@ -2,7 +2,7 @@ import HeroSeven from "/src/assets/images/Hero/Hero_7.webp";
 
 function ContactsPopup() {
   return (
-    <div className="overlay-inner header-contacts">
+    <>
       <div className="overlay-inner__image">
         <img src={HeroSeven} alt="Placeholder Image" />
       </div>
@@ -98,7 +98,7 @@ function ContactsPopup() {
         <br />
         Кими Иоки 🐉
       </p>
-    </div>
+    </>
   );
 }
 

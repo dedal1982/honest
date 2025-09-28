@@ -2,7 +2,7 @@ import HeroFour from "/src/assets/images/Hero/Hero_4.webp";
 
 function CopyrightPopup() {
   return (
-    <div className="overlay-inner copyright">
+    <>
       <div className="overlay-inner__image overlay-inner__image-copyright">
         <img src={HeroFour} alt="Placeholder Image" />
       </div>
@@ -77,7 +77,7 @@ function CopyrightPopup() {
         P.S. Помните, что даже маленькие герои могут делать большие дела! И
         защищать свои мечты — это тоже большое дело! 🧸
       </div>
-    </div>
+    </>
   );
 }
 

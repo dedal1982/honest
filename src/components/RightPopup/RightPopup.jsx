@@ -2,7 +2,7 @@ import HeroTwo from "/src/assets/images/Hero/Hero_2.webp";
 
 function RightPopup() {
   return (
-    <div className="overlay-inner main-right">
+    <>
       <div className="overlay-inner__image">
         <img src={HeroTwo} alt="Placeholder Image" />
       </div>
@@ -89,7 +89,7 @@ function RightPopup() {
         P.S. Помните: даже в самом тёмном переулке можно найти свет, если идти
         вместе. А вы — наш свет. Спасибо, что вы с нами! 🌟
       </div>
-    </div>
+    </>
   );
 }
 

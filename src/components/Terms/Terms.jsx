@@ -1,7 +1,9 @@
 import { createPortal } from "react-dom";
 import { useNavigate, useLocation } from "react-router-dom";
-import Overlay from "../Overlay/Overlay";
 import TermsPopup from "../TermsPopup/TermsPopup";
+import { lazy, Suspense } from "react";
+import Preloader from "../Preloader/Preloader";
+const LazyOverlay = lazy(() => import("../Overlay/Overlay"));
 
 function Terms() {
   const navigate = useNavigate();
@@ -22,13 +24,16 @@ function Terms() {
       <li id="terms" onClick={handleOpen}>
         &laquo;Пользовательское соглашение&#187;
       </li>
-      {location.pathname === "/terms" &&
-        createPortal(
-          <Overlay onClose={handleClose}>
-            <TermsPopup />
-          </Overlay>,
-          document.body
-        )}
+      {location.pathname === "/terms" && (
+        <Suspense fallback={<Preloader />}>
+          {createPortal(
+            <LazyOverlay onClose={handleClose}>
+              <TermsPopup />
+            </LazyOverlay>,
+            document.body
+          )}
+        </Suspense>
+      )}
     </>
   );
 }

@@ -2,16 +2,17 @@ import { createPortal } from "react-dom";
 import { useState } from "react";
 import Overlay from "../Overlay/Overlay";
 import ContactsPopup from "../ContactsPopup/ContactsPopup";
+import useModal from "../../hooks/useModal";
 
 function HeaderContacts() {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const { isOpen, open, close } = useModal(false);
 
   const handleOpen = () => {
-    setModalVisible(true);
+    open();
   };
 
   const handleClose = () => {
-    setModalVisible(false);
+    close();
   };
 
   const [contactsText, setContactsText] = useState("Контакты");
@@ -56,7 +57,7 @@ function HeaderContacts() {
           </li>
         ))}
       </ul>
-      {isModalVisible &&
+      {isOpen &&
         createPortal(
           <Overlay onClose={handleClose}>
             <ContactsPopup />

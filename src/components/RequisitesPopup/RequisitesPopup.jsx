@@ -1,4 +1,3 @@
-import React from "react";
 import HeroSix from "/src/assets/images/Hero/Hero_6.webp";
 
 function RequisitesPopup() {

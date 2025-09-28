@@ -1,7 +1,9 @@
 import { createPortal } from "react-dom";
 import { useNavigate, useLocation } from "react-router-dom";
-import Overlay from "../Overlay/Overlay";
 import PrivacyPopup from "../PrivacyPopup/PrivacyPopup";
+import { lazy, Suspense } from "react";
+import Preloader from "../Preloader/Preloader";
+const LazyOverlay = lazy(() => import("../Overlay/Overlay"));
 
 function Privacy() {
   const navigate = useNavigate();
@@ -22,13 +24,16 @@ function Privacy() {
       <li id="privacy" onClick={handleOpen}>
         &laquo;Политика конфедициальности&#187;
       </li>
-      {location.pathname === "/privacy" &&
-        createPortal(
-          <Overlay onClose={handleClose}>
-            <PrivacyPopup />
-          </Overlay>,
-          document.body
-        )}
+      {location.pathname === "/privacy" && (
+        <Suspense fallback={<Preloader />}>
+          {createPortal(
+            <LazyOverlay onClose={handleClose}>
+              <PrivacyPopup />
+            </LazyOverlay>,
+            document.body
+          )}
+        </Suspense>
+      )}
     </>
   );
 }

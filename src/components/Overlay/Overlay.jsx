@@ -60,7 +60,7 @@ function Overlay({ children, onClose }) {
             </g>
           </svg>
         </button>
-        {children}
+        <div className="overlay-inner">{children}</div>
       </div>
     </div>
   );

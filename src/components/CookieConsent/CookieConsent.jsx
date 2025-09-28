@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./CookieConsent.css";
 import Reject from "/src/assets/images/Cookie/Reject.svg";
 import Accept from "/src/assets/images/Cookie/Accept.svg";

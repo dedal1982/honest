@@ -3,7 +3,7 @@ import HeroOne from "/src/assets/images/Hero/Hero_1.webp";
 
 function CenterPopup() {
   return (
-    <div className="overlay-inner main-center">
+    <>
       <div className="overlay-inner__image">
         <img src={HeroOne} alt="Placeholder Image" />
       </div>
@@ -93,7 +93,7 @@ function CenterPopup() {
         поддержка — это тот самый шаг, который помогает нам двигаться вперёд.
         Спасибо, что вы с нами! 💥
       </div>
-    </div>
+    </>
   );
 }
 

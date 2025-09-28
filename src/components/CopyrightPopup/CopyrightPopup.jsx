@@ -1,4 +1,3 @@
-import React from "react";
 import HeroFour from "/src/assets/images/Hero/Hero_4.webp";
 
 function CopyrightPopup() {

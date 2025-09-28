@@ -1,18 +1,19 @@
 import { createPortal } from "react-dom";
-import { useState } from "react";
 import Overlay from "../Overlay/Overlay";
 import LogoPopup from "../LogoPopup/LogoPopup";
+import useModal from "../../hooks/useModal";
 
 function HeaderLogo() {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const { isOpen, open, close } = useModal(false);
 
   const handleOpen = () => {
-    setModalVisible(true);
+    open();
   };
 
   const handleClose = () => {
-    setModalVisible(false);
+    close();
   };
+
   return (
     <div id="header-logo" className="header__logo" onClick={handleOpen}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1662 480">
@@ -21,7 +22,7 @@ function HeaderLogo() {
           fillRule="evenodd"
         />
       </svg>
-      {isModalVisible &&
+      {isOpen &&
         createPortal(
           <Overlay onClose={handleClose}>
             <LogoPopup />

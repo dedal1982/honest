@@ -1,8 +1,10 @@
 import { createPortal } from "react-dom";
 import { useState } from "react";
-import Overlay from "../Overlay/Overlay";
 import ContactsPopup from "../ContactsPopup/ContactsPopup";
 import useModal from "../../hooks/useModal";
+import { lazy, Suspense } from "react";
+import Preloader from "../Preloader/Preloader";
+const LazyOverlay = lazy(() => import("../Overlay/Overlay"));
 
 function HeaderContacts() {
   const { isOpen, open, close } = useModal(false);
@@ -57,13 +59,16 @@ function HeaderContacts() {
           </li>
         ))}
       </ul>
-      {isOpen &&
-        createPortal(
-          <Overlay onClose={handleClose}>
-            <ContactsPopup />
-          </Overlay>,
-          document.body
-        )}
+      {isOpen && (
+        <Suspense fallback={<Preloader />}>
+          {createPortal(
+            <LazyOverlay onClose={handleClose}>
+              <ContactsPopup />
+            </LazyOverlay>,
+            document.body
+          )}
+        </Suspense>
+      )}
     </div>
   );
 }

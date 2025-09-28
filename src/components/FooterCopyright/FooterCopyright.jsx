@@ -1,22 +1,22 @@
 import { createPortal } from "react-dom";
-import { useState } from "react";
 import Overlay from "../Overlay/Overlay";
 import CopyrightPopup from "../CopyrightPopup/CopyrightPopup";
+import useModal from "../../hooks/useModal";
 
 function FooterCopyright() {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const { isOpen, open, close } = useModal(false);
 
   const handleOpen = () => {
-    setModalVisible(true);
+    open();
   };
 
   const handleClose = () => {
-    setModalVisible(false);
+    close();
   };
   return (
     <p id="copyright" className="footer__copyright-bottom" onClick={handleOpen}>
       &#169; ООО &laquo;Честный Эйб&#187;, 2019-2025
-      {isModalVisible &&
+      {isOpen &&
         createPortal(
           <Overlay onClose={handleClose}>
             <CopyrightPopup />

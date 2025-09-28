@@ -2,7 +2,7 @@ import HeroSix from "/src/assets/images/Hero/Hero_6.webp";
 
 function RequisitesPopup() {
   return (
-    <div className="overlay-inner requisites">
+    <>
       <div className="overlay-inner__image">
         <img src={HeroSix} alt="Placeholder Image" />
       </div>
@@ -99,7 +99,7 @@ function RequisitesPopup() {
         <br />
         Рэй Уайт 🕶️
       </p>
-    </div>
+    </>
   );
 }
 

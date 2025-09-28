@@ -2,7 +2,7 @@ import HeroFive from "/src/assets/images/Hero/Hero_5.webp";
 
 function PrivacyPopup() {
   return (
-    <div className="overlay-inner privacy">
+    <>
       <div className="overlay-inner__image">
         <img src={HeroFive} alt="Placeholder Image" />
       </div>
@@ -117,7 +117,7 @@ function PrivacyPopup() {
         P.S. Помните, что даже маленькая искра может осветить путь. А ваше
         доверие — это та самая искра, которая помогает нам двигаться вперёд! 🌩️
       </div>
-    </div>
+    </>
   );
 }
 

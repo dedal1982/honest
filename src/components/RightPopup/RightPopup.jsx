@@ -1,4 +1,3 @@
-import React from "react";
 import HeroTwo from "/src/assets/images/Hero/Hero_2.webp";
 
 function RightPopup() {

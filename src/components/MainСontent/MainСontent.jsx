@@ -2,7 +2,7 @@ import MainInner from "../MainInner/MainInner";
 import MainSocial from "../MainSocial/MainSocial";
 import HeaderMabile from "../HeaderMabile/HeaderMabile";
 
-function GrandСontent() {
+function MainСontent() {
   return (
     <div className="content">
       <div className="container">
@@ -16,4 +16,4 @@ function GrandСontent() {
   );
 }
 
-export default GrandСontent;
+export default MainСontent;

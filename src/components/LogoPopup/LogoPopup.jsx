@@ -2,7 +2,7 @@ import HeroEight from "/src/assets/images/Hero/Hero_8.webp";
 
 function LogoPopup() {
   return (
-    <div className="overlay-inner header-logo">
+    <>
       <div className="overlay-inner__image">
         <img src={HeroEight} alt="Placeholder Image" />
       </div>
@@ -63,7 +63,7 @@ function LogoPopup() {
       </ul>
       <hr className="overlay-inner-separator" />
       <p className="overlay-inner-signature">Айкис 🐾</p>
-    </div>
+    </>
   );
 }
 

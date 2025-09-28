@@ -2,7 +2,7 @@ import HeroThree from "/src/assets/images/Hero/Hero_3.webp";
 
 function LeftPopup() {
   return (
-    <div className="overlay-inner main-left">
+    <>
       <div className="overlay-inner__image">
         <img src={HeroThree} alt="Placeholder Image" />
       </div>
@@ -94,7 +94,7 @@ function LeftPopup() {
         А ваша поддержка — это та самая деталь, которая помогает нам двигаться
         вперёд. Спасибо, что вы с нами! 🛠️
       </div>
-    </div>
+    </>
   );
 }
 

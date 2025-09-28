@@ -1,4 +1,3 @@
-import React from "react";
 import HeroThree from "/src/assets/images/Hero/Hero_3.webp";
 
 function LeftPopup() {

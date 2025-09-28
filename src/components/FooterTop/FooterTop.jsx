@@ -1,8 +1,10 @@
 import { createPortal } from "react-dom";
 import { useState } from "react";
-import Overlay from "../Overlay/Overlay";
 import RequisitesPopup from "../RequisitesPopup/RequisitesPopup";
 import useModal from "../../hooks/useModal";
+import { lazy, Suspense } from "react";
+import Preloader from "../Preloader/Preloader";
+const LazyOverlay = lazy(() => import("../Overlay/Overlay"));
 
 function FooterTop() {
   const { isOpen, open, close } = useModal(false);
@@ -65,13 +67,16 @@ function FooterTop() {
         <li>Корреспондентский счет: 30101810200000000593</li>
         <li>БИК: 044525593</li>
       </ul>
-      {isOpen &&
-        createPortal(
-          <Overlay onClose={handleClose}>
-            <RequisitesPopup />
-          </Overlay>,
-          document.body
-        )}
+      {isOpen && (
+        <Suspense fallback={<Preloader />}>
+          {createPortal(
+            <LazyOverlay onClose={handleClose}>
+              <RequisitesPopup />
+            </LazyOverlay>,
+            document.body
+          )}
+        </Suspense>
+      )}
     </div>
   );
 }

@@ -1,17 +1,17 @@
 import { createPortal } from "react-dom";
-import { useState } from "react";
 import Overlay from "../Overlay/Overlay";
 import LeftPopup from "../LeftPopup/LeftPopup";
+import useModal from "../../hooks/useModal";
 
 function MainLeft() {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const { isOpen, open, close } = useModal(false);
 
   const handleOpen = () => {
-    setModalVisible(true);
+    open();
   };
 
   const handleClose = () => {
-    setModalVisible(false);
+    close();
   };
 
   return (
@@ -23,7 +23,7 @@ function MainLeft() {
           fillRule="evenodd"
         />
       </svg>
-      {isModalVisible &&
+      {isOpen &&
         createPortal(
           <Overlay onClose={handleClose}>
             <LeftPopup />

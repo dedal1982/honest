@@ -1,4 +1,3 @@
-import React from "react";
 import HeroSeven from "/src/assets/images/Hero/Hero_7.webp";
 
 function ContactsPopup() {

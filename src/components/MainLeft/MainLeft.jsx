@@ -1,7 +1,9 @@
 import { createPortal } from "react-dom";
-import Overlay from "../Overlay/Overlay";
 import LeftPopup from "../LeftPopup/LeftPopup";
 import useModal from "../../hooks/useModal";
+import { lazy, Suspense } from "react";
+import Preloader from "../Preloader/Preloader";
+const LazyOverlay = lazy(() => import("../Overlay/Overlay"));
 
 function MainLeft() {
   const { isOpen, open, close } = useModal(false);
@@ -23,13 +25,16 @@ function MainLeft() {
           fillRule="evenodd"
         />
       </svg>
-      {isOpen &&
-        createPortal(
-          <Overlay onClose={handleClose}>
-            <LeftPopup />
-          </Overlay>,
-          document.body
-        )}
+      {isOpen && (
+        <Suspense fallback={<Preloader />}>
+          {createPortal(
+            <LazyOverlay onClose={handleClose}>
+              <LeftPopup />
+            </LazyOverlay>,
+            document.body
+          )}
+        </Suspense>
+      )}
     </div>
   );
 }

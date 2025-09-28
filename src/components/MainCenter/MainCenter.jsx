@@ -1,7 +1,9 @@
 import { createPortal } from "react-dom";
-import Overlay from "../Overlay/Overlay";
 import CenterPopup from "../CenterPopup/CenterPopup";
 import useModal from "../../hooks/useModal";
+import { lazy, Suspense } from "react";
+import Preloader from "../Preloader/Preloader";
+const LazyOverlay = lazy(() => import("../Overlay/Overlay"));
 
 function MainCenter() {
   const { isOpen, open, close } = useModal(false);
@@ -22,13 +24,16 @@ function MainCenter() {
           fillRule="evenodd"
         />
       </svg>
-      {isOpen &&
-        createPortal(
-          <Overlay onClose={handleClose}>
-            <CenterPopup />
-          </Overlay>,
-          document.body
-        )}
+      {isOpen && (
+        <Suspense fallback={<Preloader />}>
+          {createPortal(
+            <LazyOverlay onClose={handleClose}>
+              <CenterPopup />
+            </LazyOverlay>,
+            document.body
+          )}
+        </Suspense>
+      )}
     </div>
   );
 }

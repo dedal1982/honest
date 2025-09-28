@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
-import GrandСontent from "../GrandСontent/GrandСontent";
+import MainСontent from "../MainСontent/MainСontent";
 import Footer from "../Footer/Footer";
 import CookieConsent from "../CookieConsent/CookieConsent";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
@@ -13,7 +13,7 @@ function App() {
     <div className="page">
       <Header />
       <Routes>
-        <Route path="/" element={<GrandСontent />} />
+        <Route path="/" element={<MainСontent />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="*" element={<NotFoundPage />} />

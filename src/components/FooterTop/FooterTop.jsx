@@ -2,16 +2,17 @@ import { createPortal } from "react-dom";
 import { useState } from "react";
 import Overlay from "../Overlay/Overlay";
 import RequisitesPopup from "../RequisitesPopup/RequisitesPopup";
+import useModal from "../../hooks/useModal";
 
 function FooterTop() {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const { isOpen, open, close } = useModal(false);
 
   const handleOpen = () => {
-    setModalVisible(true);
+    open();
   };
 
   const handleClose = () => {
-    setModalVisible(false);
+    close();
   };
 
   const [active, setActive] = useState(false);
@@ -64,7 +65,7 @@ function FooterTop() {
         <li>Корреспондентский счет: 30101810200000000593</li>
         <li>БИК: 044525593</li>
       </ul>
-      {isModalVisible &&
+      {isOpen &&
         createPortal(
           <Overlay onClose={handleClose}>
             <RequisitesPopup />

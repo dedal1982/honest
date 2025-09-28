@@ -1,6 +1,6 @@
-import MainInner from "./MainInner";
-import MainSocial from "./MainSocial";
-import HeaderMabile from "./HeaderMabile";
+import MainInner from "../MainInner/MainInner";
+import MainSocial from "../MainSocial/MainSocial";
+import HeaderMabile from "../HeaderMabile/HeaderMabile";
 
 function GrandСontent() {
   return (
